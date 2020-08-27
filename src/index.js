@@ -28,7 +28,6 @@ const init = async () => {
 
     list.addEventListener('click', async (event) => {
         try {
-            console.log('hello')
             if (event.target.tagName === 'BUTTON') {
                 if (event.target.innerHTML === 'x') {
                     const id = event.target.getAttribute('data-id')*1;
@@ -41,7 +40,6 @@ const init = async () => {
                     const friend = friends.find(elem => elem.id === id);
                     const check = event.target.innerHTML === '+';
                     friend.rating = check ? ++friend.rating : --friend.rating;
-                    console.log(friend)
                     await axios.put(`/api/friends/${friend.id}`, {rating: friend.rating});
                     render(friends);
                 }
